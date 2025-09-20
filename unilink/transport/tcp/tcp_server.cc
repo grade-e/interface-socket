@@ -7,7 +7,6 @@ namespace transport {
 
 namespace net = boost::asio;
 
-using namespace interface;
 using namespace common;
 using namespace config;
 using tcp = net::ip::tcp;

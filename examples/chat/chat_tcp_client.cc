@@ -6,10 +6,10 @@
 #include <thread>
 #include <vector>
 
+#include "channel.hpp"
 #include "factory/channel_factory.hpp"
-#include "interface/ichannel.hpp"
 
-using namespace unilink::interface;
+using namespace unilink;
 using namespace unilink::factory;
 using namespace unilink::common;
 using namespace unilink::config;

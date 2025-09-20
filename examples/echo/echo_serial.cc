@@ -8,7 +8,7 @@
 #include "common/common.hpp"
 #include "factory/channel_factory.hpp"
 
-using namespace unilink::interface;
+using namespace unilink;
 using namespace unilink::factory;
 using namespace unilink::common;
 using namespace unilink::config;

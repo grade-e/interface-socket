@@ -9,13 +9,12 @@ namespace unilink {
 namespace factory {
 
 using ChannelOptions = ChannelFactory::ChannelOptions;
-using namespace interface;
 using namespace transport;
 
-std::shared_ptr<IChannel> ChannelFactory::create(
-    boost::asio::io_context& ioc, const ChannelOptions& options) {
+std::shared_ptr<Channel> ChannelFactory::create(boost::asio::io_context& ioc,
+                                                const ChannelOptions& options) {
   return std::visit(
-      [&](const auto& opt) -> std::shared_ptr<IChannel> {
+      [&](const auto& opt) -> std::shared_ptr<Channel> {
         using T = std::decay_t<decltype(opt)>;
         if constexpr (std::is_same_v<T, TcpClientConfig>) {
           return std::make_shared<TcpClient>(ioc, opt);

@@ -3,7 +3,7 @@
 #include <string>
 #include <variant>
 
-#include "interface/ichannel.hpp"
+#include "channel.hpp"
 #include "transport/serial/serial.hpp"
 #include "transport/tcp/tcp_client.hpp"
 #include "transport/tcp/tcp_server.hpp"
@@ -11,7 +11,6 @@
 namespace unilink {
 namespace factory {
 
-using namespace interface;
 using namespace config;
 
 class ChannelFactory {
@@ -20,8 +19,8 @@ class ChannelFactory {
       std::variant<TcpClientConfig, TcpServerConfig, SerialConfig>;
 
   // Unified factory API
-  static std::shared_ptr<IChannel> create(class boost::asio::io_context& ioc,
-                                          const ChannelOptions& options);
+  static std::shared_ptr<Channel> create(class boost::asio::io_context& ioc,
+                                         const ChannelOptions& options);
 };
 }  // namespace factory
 }  // namespace unilink

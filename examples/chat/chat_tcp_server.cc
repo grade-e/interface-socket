@@ -1,15 +1,14 @@
-// examples/raw_server.cc (교체)
 #include <atomic>
 #include <boost/asio.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
 
+#include "channel.hpp"
 #include "common/common.hpp"
 #include "factory/channel_factory.hpp"
-#include "interface/ichannel.hpp"
 
-using namespace unilink::interface;
+using namespace unilink;
 using namespace unilink::factory;
 using namespace unilink::common;
 using namespace unilink::config;

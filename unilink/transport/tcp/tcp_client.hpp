@@ -8,20 +8,19 @@
 #include <string>
 #include <vector>
 
+#include "channel.hpp"
 #include "config/tcp_client_config.hpp"
-#include "interface/ichannel.hpp"
 
 namespace unilink {
 namespace transport {
 
 namespace net = boost::asio;
 
-using namespace interface;
 using namespace common;
 using namespace config;
 using tcp = net::ip::tcp;
 
-class TcpClient : public IChannel,
+class TcpClient : public Channel,
                   public std::enable_shared_from_this<TcpClient> {
  public:
   TcpClient(net::io_context& ioc, const TcpClientConfig& cfg);

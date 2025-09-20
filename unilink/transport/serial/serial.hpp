@@ -7,18 +7,17 @@
 #include <string>
 #include <vector>
 
+#include "channel.hpp"
 #include "config/serial_config.hpp"
-#include "interface/ichannel.hpp"
 
 namespace unilink {
 namespace transport {
 
-using namespace interface;
 using namespace common;
 using namespace config;
 namespace net = boost::asio;
 
-class Serial : public IChannel, public std::enable_shared_from_this<Serial> {
+class Serial : public Channel, public std::enable_shared_from_this<Serial> {
  public:
   Serial(net::io_context& ioc, const SerialConfig& cfg);
 

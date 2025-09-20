@@ -8,8 +8,8 @@
 #include <memory>
 #include <vector>
 
+#include "channel.hpp"
 #include "config/tcp_server_config.hpp"
-#include "interface/ichannel.hpp"
 #include "tcp_server_session.hpp"
 
 namespace unilink {
@@ -17,12 +17,11 @@ namespace transport {
 
 namespace net = boost::asio;
 
-using namespace interface;
 using namespace common;
 using namespace config;
 using tcp = net::ip::tcp;
 
-class TcpServer : public IChannel,
+class TcpServer : public Channel,
                   public std::enable_shared_from_this<TcpServer> {  // NOLINT
  public:
   TcpServer(net::io_context& ioc, const TcpServerConfig& cfg);
