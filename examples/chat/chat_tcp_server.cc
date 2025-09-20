@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
   boost::asio::io_context ioc;
 
   TcpServerConfig cfg{port};
-  auto srv = ChannelFactory::create(ioc, cfg);
+  auto srv = ChannelFactory::create_tcp_server(ioc, cfg);
 
   std::atomic<bool> connected{false};
 

@@ -8,26 +8,21 @@
 namespace unilink {
 namespace factory {
 
-using ChannelOptions = ChannelFactory::ChannelOptions;
 using namespace transport;
 
-std::shared_ptr<Channel> ChannelFactory::create(boost::asio::io_context& ioc,
-                                                const ChannelOptions& options) {
-  return std::visit(
-      [&](const auto& opt) -> std::shared_ptr<Channel> {
-        using T = std::decay_t<decltype(opt)>;
-        if constexpr (std::is_same_v<T, TcpClientConfig>) {
-          return std::make_shared<TcpClient>(ioc, opt);
-        } else if constexpr (std::is_same_v<T, TcpServerConfig>) {
-          return std::make_shared<TcpServer>(ioc, opt);
-        } else if constexpr (std::is_same_v<T, SerialConfig>) {
-          return std::make_shared<Serial>(ioc, opt);
-        } else {
-          static_assert(!sizeof(T*),
-                        "Non-exhaustive visitor for ChannelOptions");
-        }
-      },
-      options);
+std::shared_ptr<Channel> ChannelFactory::create_serial(
+    boost::asio::io_context& ioc, const SerialConfig& cfg) {
+  return std::make_shared<Serial>(ioc, cfg);
+}
+
+std::shared_ptr<Channel> ChannelFactory::create_tcp_client(
+    boost::asio::io_context& ioc, const TcpClientConfig& cfg) {
+  return std::make_shared<TcpClient>(ioc, cfg);
+}
+
+std::shared_ptr<Channel> ChannelFactory::create_tcp_server(
+    boost::asio::io_context& ioc, const TcpServerConfig& cfg) {
+  return std::make_shared<TcpServer>(ioc, cfg);
 }
 
 }  // namespace factory

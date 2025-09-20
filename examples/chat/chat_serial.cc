@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
   cfg.baud_rate = 115200;
   cfg.retry_interval_ms = 2000;
 
-  auto ch = ChannelFactory::create(ioc, cfg);
+  auto ch = ChannelFactory::create_serial(ioc, cfg);
 
   std::atomic<bool> connected{false};
   std::string rx_acc;

@@ -15,12 +15,12 @@ using namespace config;
 
 class ChannelFactory {
  public:
-  using ChannelOptions =
-      std::variant<TcpClientConfig, TcpServerConfig, SerialConfig>;
-
-  // Unified factory API
-  static std::shared_ptr<Channel> create(class boost::asio::io_context& ioc,
-                                         const ChannelOptions& options);
+  static std::shared_ptr<Channel> create_serial(boost::asio::io_context& ioc,
+                                                const SerialConfig& cfg);
+  static std::shared_ptr<Channel> create_tcp_client(
+      boost::asio::io_context& ioc, const TcpClientConfig& cfg);
+  static std::shared_ptr<Channel> create_tcp_server(
+      boost::asio::io_context& ioc, const TcpServerConfig& cfg);
 };
 }  // namespace factory
 }  // namespace unilink

@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
   cfg.device = dev;
   cfg.baud_rate = 115200;
   cfg.retry_interval_ms = 2000;
-  auto ser = ChannelFactory::create(ioc, cfg);
+  auto ser = ChannelFactory::create_serial(ioc, cfg);
 
   std::atomic<bool> connected{false};
 

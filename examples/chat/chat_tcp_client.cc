@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
   cfg.host = host;
   cfg.port = port;
 
-  auto cli = ChannelFactory::create(ioc, cfg);
+  auto cli = ChannelFactory::create_tcp_client(ioc, cfg);
 
   std::atomic<bool> connected{false};
   std::string rx_acc;

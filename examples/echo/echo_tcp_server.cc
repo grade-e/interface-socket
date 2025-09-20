@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
   boost::asio::io_context ioc;
 
   TcpServerConfig cfg{port};
-  auto srv = ChannelFactory::create(ioc, cfg);
+  auto srv = ChannelFactory::create_tcp_server(ioc, cfg);
   srv->on_state([&](LinkState s) {
     std::string state_msg = "state=" + std::string(to_cstr(s));
     log_message("[server]", "STATE", state_msg);
